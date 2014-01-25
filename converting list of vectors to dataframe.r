@@ -22,7 +22,7 @@ font_import()
 # E.coli Growth Curve
 #####
 
-##Complimented mutant
+##Complemented mutant
 #"OD of overnight culture 1:20 dilution is 0.315 32 ml was added into the fermenter"
 od.cm <- c(0.095, 0.075, 0.108, 0.12, 0.162, 0.217, 0.315, 0.394, 0.439, 0.468, 0.501)
 time.cm <- c(0,15,30,45,60,75,90,100,207,110,113)
