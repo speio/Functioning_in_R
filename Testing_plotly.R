@@ -34,8 +34,8 @@ test.plot <- ggplot(data = Data_Frame, aes(x=x, y=y))  +
 print(test.plot)
 
 #applying the above ggplot to plotly...?
-set_credentials_file(username="g.villafano", api_key="nbny7yk7g3")
-test2 <- plotly(username="g.villafano", key="nbny7yk7g3")
+set_credentials_file(username="username", api_key="key")
+test2 <- plotly(username="username", key="key")
 #plot <- p$plotly(data = Data_Frame, x = x,  y = Data_Frame$y, type = 'line')
 
 plot2 <- test2$ggplotly(test.plot)
