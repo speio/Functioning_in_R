@@ -39,3 +39,27 @@ test2 <- plotly(username="g.villafano", key="nbny7yk7g3")
 #plot <- p$plotly(data = Data_Frame, x = x,  y = Data_Frame$y, type = 'line')
 
 plot2 <- test2$ggplotly(test.plot)
+
+#gives the error
+#> plot2 <- test2$ggplotly(test.plot)
+#Uh oh, an error occured on the server. 
+#Error in browseURL(resp$url) : 'url' must be a non-empty character string
+#In addition: Warning message:
+#  In layer2traces(L, df, misc, trace.list$plot) :
+#  Conversion not implemented for geom_smooth (basic geom_smooth), ignoring. Please open an issue with your example code at https://github.com/ropensci/plotly/issues
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
