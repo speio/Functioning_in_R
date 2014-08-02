@@ -99,7 +99,7 @@ pl <- test$ggplotly(growth.plot)
 
 
 
-
+####       SCRAP     ####
 rowss <- function(df, row_num){
   row <- c()
   for(i in 1:length(df)){
