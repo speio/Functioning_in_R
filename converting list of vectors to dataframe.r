@@ -1,5 +1,31 @@
+<<<<<<< HEAD
 
 ##### Data Input For E.coli Growth Curve (use as sample data set to test function) #####
+=======
+#Genetics Lab calculations, data, graphs, etc. 
+#Jan 25th 2014
+
+#Commonly used packages
+library(MASS)
+library(ggplot2)
+library(gdata)
+library(car)
+library(lmtest)
+library(stats)
+library(foreign)
+library(vcd)
+library(extrafont)
+library(directlabels)
+library(graphics)
+
+
+#I think I used this for importing nice fonts, I'll figure it out later. 
+font_import()
+
+#####
+# E.coli Growth Curve
+#####
+>>>>>>> 00f26c8c47ba03c06b8d593069fbdef26252b2e8
 
 ##Complemented mutant
 #"OD of overnight culture 1:20 dilution is 0.315 32 ml was added into the fermenter"
