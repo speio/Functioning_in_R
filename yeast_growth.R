@@ -44,17 +44,15 @@ df.deviations$Time <- df$time.1.8.
 df.avg <- melt(df.avg ,  id = 'Time', variable_name = 'Sample')
 df.dvs <- melt(df.deviations, id = 'Time', variable_name = 'Sample') 
 df.avg$sd <- df.dvs[3]
-
 colnames(df.avg) <- c('Time', 'Sample', 'OD', 'sd')
+df.avg
 
+error <- aes( ymin= OD - sd, ymax= OD + sd)
 
-error <- aes( ymin= (OD - sd), ymax = (OD +sd))
-df.avg$OD - df.avg$sd
-
-growth.plot <- ggplot(df.avg, aes(Time,OD)) +
+growth.plot <- ggplot(df.avg, aes(Time,OD), stat = 'identity') +
   geom_line(aes(col = Sample)) +
     geom_point(aes(col = Sample)) +
-      geom_errorbar(aes( ymin= (OD - sd), ymax = (OD +sd)), col = 'tan', width = .2, size = 0.8, position = position_dodge(.9)) + 
+      geom_errorbar(error, col = 'tan', width = .2, size = 0.8, position = position_dodge(.9)) + 
         labs(x = 'Time (min)', y = 'OD' )
 
 print(growth.plot)
