@@ -7,7 +7,6 @@ library(reshape)
 growth <- file.choose()
 
 df <- as.data.frame(read.table(growth))
-df
 
 ymk211.30 <- subset(df, select = ymk211.30.1:ymk211.30.3)
 ymk211.18 <- subset(df, select = ymk211.18.1:ymk211.18.3)
@@ -16,11 +15,17 @@ ymk118.18 <- subset(df, select = ymk118.18.1:ymk118.18.3)
 
 
 deviations <- list()
-deviations[[4]] <- apply(ymk211.30, 1, sd)
+
 #creating list of standard deviations
 #How to access the list
+deviations[[1]] <- apply(ymk118.18, 1, sd)
+deviations[[2]] <- apply(ymk118.30, 1, sd)
+deviations[[3]] <- apply(ymk211.18, 1, sd)
+deviations[[4]] <- apply(ymk211.30, 1, sd)
+#how to access in current form
 deviations[[c(1,1)]]
 
+#list of average growths between triplicates
 avg.growth <- list()
 avg.growth[[1]] <- rowMeans(ymk118.18)
 avg.growth[[2]] <- rowMeans(ymk118.30)
