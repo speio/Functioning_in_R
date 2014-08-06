@@ -68,30 +68,17 @@ growth.plot <- ggplot(df.avg.melt, aes(Time,OD), stat = 'identity') +
 print(growth.plot)
 
 
-dvs.1 <- df.deviations$ymk118.18
-df.1 <- list(y = df.avg$ymk118.18, x = df.avg$Time, sd = dvs.1)
-df.1 <- as.data.frame(df.1)
+#dvs.1 <- df.deviations$ymk118.18
+#df.1 <- list(y = df.avg$ymk118.18, x = df.avg$Time, sd = dvs.1)
+#df.1 <- as.data.frame(df.1)
 
 ##AN EXMAPLE WITH ERROR BARS (individually would have to add each plot layer by layer)
-plot1 <- ggplot(df.1, aes(x=x,y=y), stat = 'identity') +
-  geom_errorbar(error1, size = 0.8, width = 20, col = 'grey')+        
-  geom_line() + geom_point()
+#plot1 <- ggplot(df.1, aes(x=x,y=y), stat = 'identity') +
+#  geom_errorbar(error1, size = 0.8, width = 20, col = 'grey')+        
+#  geom_line() + geom_point()
 
 
-print(plot1)
-
-error1 <- aes(ymin = df.avg[[1]] - df.deviations[[1]], ymax = df.avg[[1]]+ df.deviations[[1]])
-error2 <- aes(ymin = df.avg[[2]] - df.deviations[[2]], ymax = df.avg[[2]]+ df.deviations[[2]])
-error3 <- aes(ymin = df.avg[[3]] - df.deviations[[3]], ymax = df.avg[[3]]+ df.deviations[[3]])
-error4 <- aes(ymin = df.avg[[4]] - df.deviations[[4]], ymax = df.avg[[4]]+ df.deviations[[4]])
-
-
-
-
-test <- plotly(username="g.villafano", key="nbny7yk7g3")
-
-pl <- test$ggplotly(growth.plot)
-
+#print(plot1)
 
 
 
@@ -116,46 +103,3 @@ deviations <- function(df){
   }
 }
 deviations(ymk118.18)
-
-## Summarizes data.
-## Gives count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
-##   data: a data frame.
-##   measurevar: the name of a column that contains the variable to be summariezed
-##   groupvars: a vector containing names of columns that contain grouping variables
-##   na.rm: a boolean that indicates whether to ignore NA's
-##   conf.interval: the percent range of the confidence interval (default is 95%)
-summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
-                      conf.interval=.95, .drop=TRUE) {
-  require(plyr)
-  
-  # New version of length which can handle NA's: if na.rm==T, don't count them
-  length2 <- function (x, na.rm=FALSE) {
-    if (na.rm) sum(!is.na(x))
-    else       length(x)
-  }
-  
-  # This does the summary. For each group's data frame, return a vector with
-  # N, mean, and sd
-  datac <- ddply(data, groupvars, .drop=.drop,
-                 .fun = function(xx, col) {
-                   c(N    = length2(xx[[col]], na.rm=na.rm),
-                     mean = mean   (xx[[col]], na.rm=na.rm),
-                     sd   = sd     (xx[[col]], na.rm=na.rm)
-                   )
-                 },
-                 measurevar
-  )
-  
-  # Rename the "mean" column    
-  datac <- rename(datac, c("mean" = measurevar))
-  
-  datac$se <- datac$sd / sqrt(datac$N)  # Calculate standard error of the mean
-  
-  # Confidence interval multiplier for standard error
-  # Calculate t-statistic for confidence interval: 
-  # e.g., if conf.interval is .95, use .975 (above/below), and use df=N-1
-  ciMult <- qt(conf.interval/2 + .5, datac$N-1)
-  datac$ci <- datac$se * ciMult
-  
-  return(datac)
-}
